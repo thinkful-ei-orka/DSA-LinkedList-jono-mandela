@@ -28,16 +28,17 @@ class LinkedList {
     }
 
     insertBefore(item, value) {
-        let newNode = new _Node(item, value);
-        if (this.head.value === value) {
+        let newNode = new _Node(item, null);
+        if (this.head.value === value || this.head === null) {
             this.insertFirst(item)
         }
         else {
             let tempNode = this.head;
-            while (tempNode.next !== value) {
+            while (tempNode.next.value !== value) {
                 tempNode = tempNode.next
             }
-            tempNode.next = newNode.value;
+            newNode.next = tempNode.next;
+            tempNode.next = newNode;
         }
     }
 
@@ -51,7 +52,7 @@ class LinkedList {
                 tempNode = tempNode.next
             }
             let newNode = new _Node(item, tempNode.next);
-            tempNode.next = newNode.value;
+            tempNode.next = newNode;
         }
     }
 
@@ -106,6 +107,7 @@ class LinkedList {
         }
         // Start at the head
         let currNode = this.head;
+        console.log('ln110', currNode);
         // Keep track of previous
         let previousNode = this.head;
 
@@ -115,11 +117,63 @@ class LinkedList {
             currNode = currNode.next;
         }
         if (currNode === null) {
-            console.log('Item not found');
+            // console.log('Item not found');
             return;
         }
         previousNode.next = currNode.next;
     }
 }
 
-export default LinkedList;
+let display = (list) => {
+    let currentNode = list.head;
+    while (currentNode !== null) {
+        // console.log(currentNode);
+        currentNode = currentNode.next
+    }
+};
+
+let size = (list) => {
+    return
+};
+
+let isEmpty = (list) => {
+    return
+};
+
+let findPrevious = (list) => {
+    return
+};
+
+let findLast = (list) => {
+    return
+};
+
+function main() {
+    let SLL = new LinkedList()
+    SLL.insertFirst('Apollo')
+    SLL.insertLast('Boomer')
+    SLL.insertLast('Helo')
+    SLL.insertLast('Husker')
+    SLL.insertLast('Starbuck')
+
+    SLL.insertLast('Tauhida')
+
+    SLL.remove('squirrel')
+
+    SLL.insertBefore('Athena', 'Boomer')
+
+    SLL.insertAfter('Hotdog', 'Helo')
+
+    SLL.insertAt('Kat', 3)
+
+    SLL.remove('Tauhida')
+
+    console.log(SLL);
+    return SLL;
+}
+
+// const testList = main();
+
+// display(testList);
+
+module.exports = LinkedList

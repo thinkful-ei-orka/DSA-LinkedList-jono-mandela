@@ -113,9 +113,26 @@ function WhatDoesThisProgramDo(lst) {
     }
 }
 
-function recursiveReverseLinkedList(list) {
-    return
-}
+function recursiveReverseLinkedList(lst) {
+    currentNode = lst.head
+    
+    // 1, 3, 5, 7, 9
+
+    // same value, pointer next
+
+    function reversePointer(node) {
+    // base case
+        if (node.next.next === null) {
+            node.next.next = node.next
+            node.next = null
+            return node
+        }
+    // recursive case
+        return node = reversePointer(node)
+    }
+
+    lst.head = reversePointer(currentNode) //9 with pointer to 7 (i.e. where )
+    } 
 
 function iterativeReverseLinkedList(list) {
     let previousNode = null;

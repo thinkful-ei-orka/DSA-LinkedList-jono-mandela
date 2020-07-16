@@ -5,9 +5,15 @@ const LinkedList = require('./linked-list');
 function main() {
     let SLL = new LinkedList()
     SLL.insertFirst('Apollo')
+    SLL.insertLast('Starbuck')
+
     SLL.insertLast('Boomer')
     SLL.insertLast('Helo')
     SLL.insertLast('Husker')
+    SLL.insertLast('Husker')
+
+    SLL.insertLast('Starbuck')
+    SLL.insertLast('Starbuck')
     SLL.insertLast('Starbuck')
 
     SLL.insertLast('Tauhida')
@@ -23,11 +29,15 @@ function main() {
     SLL.remove('Tauhida')
 
     // console.log(SLL);
-    display(SLL)
+    // display(SLL)
     // console.log('list size: ', size(SLL))
     // console.log('is list empty?' ,isEmpty(SLL))
     // console.log('befor husker:', findPrevious(SLL, 'Husker'))
-    console.log('last item:', findLast(SLL))
+    // console.log('last item:', findLast(SLL))
+
+    WhatDoesThisProgramDo(SLL)
+    display(SLL)
+    
 }
 
 let display = (list) => {
@@ -90,5 +100,23 @@ let findLast = (list) => {
 
     return currentNode.value
 };
+
+// this program finds copies of the same value and removes all but the first instance
+// time complexity: O(n^2)
+function WhatDoesThisProgramDo(lst) {
+    let current = lst.head;
+    while (current !== null) {
+        let newNode = current;
+        while (newNode.next !== null) {
+            if (newNode.next.value === current.value) {
+                newNode.next = newNode.next.next;
+            }
+            else {
+                newNode = newNode.next;
+            }
+        }
+        current = current.next;
+    }
+}
 
 main();

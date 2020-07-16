@@ -107,7 +107,6 @@ class LinkedList {
         }
         // Start at the head
         let currNode = this.head;
-        console.log('ln110', currNode);
         // Keep track of previous
         let previousNode = this.head;
 
@@ -117,7 +116,7 @@ class LinkedList {
             currNode = currNode.next;
         }
         if (currNode === null) {
-            // console.log('Item not found');
+            console.log('Item not found');
             return;
         }
         previousNode.next = currNode.next;
@@ -127,26 +126,11 @@ class LinkedList {
 let display = (list) => {
     let currentNode = list.head;
     while (currentNode !== null) {
-        // console.log(currentNode);
+        console.log(currentNode);
         currentNode = currentNode.next
     }
 };
 
-let size = (list) => {
-    return
-};
-
-let isEmpty = (list) => {
-    return
-};
-
-let findPrevious = (list) => {
-    return
-};
-
-let findLast = (list) => {
-    return
-};
 
 function main() {
     let SLL = new LinkedList()

@@ -119,4 +119,12 @@ function WhatDoesThisProgramDo(lst) {
     }
 }
 
+function recursiveReverseLinkedList(lst) {
+    return
+}
+
+function iterativeReverseLinkedList(lst) {
+    return
+}
+
 main();

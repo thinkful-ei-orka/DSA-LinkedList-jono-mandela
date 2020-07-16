@@ -5,15 +5,9 @@ const LinkedList = require('./linked-list');
 function main() {
     let SLL = new LinkedList()
     SLL.insertFirst('Apollo')
-    SLL.insertLast('Starbuck')
-
     SLL.insertLast('Boomer')
     SLL.insertLast('Helo')
     SLL.insertLast('Husker')
-    SLL.insertLast('Husker')
-
-    SLL.insertLast('Starbuck')
-    SLL.insertLast('Starbuck')
     SLL.insertLast('Starbuck')
 
     SLL.insertLast('Tauhida')
@@ -35,9 +29,9 @@ function main() {
     // console.log('befor husker:', findPrevious(SLL, 'Husker'))
     // console.log('last item:', findLast(SLL))
 
-    WhatDoesThisProgramDo(SLL)
-    display(SLL)
-    
+    // WhatDoesThisProgramDo(SLL)
+    // display(SLL)
+    console.log('reverse', iterativeReverseLinkedList(SLL))
 }
 
 let display = (list) => {
@@ -119,12 +113,33 @@ function WhatDoesThisProgramDo(lst) {
     }
 }
 
-function recursiveReverseLinkedList(lst) {
+function recursiveReverseLinkedList(list) {
     return
 }
 
-function iterativeReverseLinkedList(lst) {
-    return
+function iterativeReverseLinkedList(list) {
+    let previousNode = null;
+    let currentNode = list.head;
+    let nextNode= null;
+    
+    while (currentNode !== null) {
+        nextNode = currentNode.next;
+        currentNode.next = previousNode;
+        previousNode = currentNode;
+        currentNode = nextNode
+    }
+
+    list.head = previousNode;
+    return list;
+}
+
+function thirdFromEnd(list) {
+    let current = list.head;
+    while (current.next.next.next !== null) {
+        current = current.next
+    }
+    return current
 }
 
 main();
+
